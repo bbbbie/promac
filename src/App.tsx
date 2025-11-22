@@ -7,17 +7,9 @@ import { IntroPage } from "./pages/IntroPage";
 
 function App() {
   return (
-    // SỬA Ở ĐÂY:
-    // 1. Xóa 'py-10' (padding trên dưới) nếu bạn muốn sát rạt cả trên lẫn dưới.
-    // 2. Hoặc đổi thành 'pt-10 pb-0' nếu bạn muốn cách ở trên nhưng sát ở dưới.
-    // 3. Thêm 'justify-start' thay vì 'justify-center' để đảm bảo nó bắt đầu từ trên cùng.
-    <main className="min-h-screen w-full bg-black flex flex-col items-center overflow-x-hidden pt-10 pb-0">
-      {" "}
-      {/* <--- Đã sửa pb-0 */}
-      {/* TỜ GIẤY TRẮNG */}
+    <main className="min-h-screen w-full bg-black flex flex-col items-center overflow-x-hidden ">
       <div
         className="bg-white flex flex-col relative shadow-2xl"
-        // Thêm mb-0 để chắc chắn không có margin dưới
         style={{
           width: "1440px",
           minHeight: "100vh",
