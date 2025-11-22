@@ -112,20 +112,22 @@ export const HomeProcess = () => {
       {/* CONTAINER CHÍNH */}
       <div className="relative w-[1440px] h-full z-10">
         {/* HEADER LEFT */}
-        <div className="absolute left-[54px] top-[163px] z-20">
+        <div className="absolute left-[125px] top-[126px] z-20">
+          {/* HEADING */}
           <h2
-            className="font-manrope font-extrabold text-[#000000]"
+            className="font-inter font-extrabold text-black"
             style={{
-              width: "861px",
+              width: "940px",
               fontSize: "56px",
               lineHeight: "60px",
-              letterSpacing: "-0.03em",
-              marginBottom: "21px",
-              whiteSpace: "nowrap",
             }}
           >
-            Quy trình làm việc chuyên nghiệp, <br /> Chính sách rõ ràng.
+            Quy trình làm việc chuyên nghiệp,
+            <br />
+            Chính sách rõ ràng.
           </h2>
+
+          {/* DESCRIPTION */}
           <p
             className="font-manrope font-medium text-[#64607D]"
             style={{
@@ -133,15 +135,22 @@ export const HomeProcess = () => {
               fontSize: "16px",
               lineHeight: "30px",
               letterSpacing: "-0.02em",
-              marginBottom: "19px",
+              marginTop: "21px",
             }}
           >
             Yet bed any for travelling assistance indulgence unpleasing. Not
             thoughts all exercise blessing. Indulgence way everything joy.
           </p>
+
+          {/* BUTTON */}
           <button
-            className="flex items-center justify-center bg-[#FF0000] rounded-[47px] transition-transform hover:scale-105"
-            style={{ width: "162px", height: "47px" }}
+            className="absolute bg-[#FF0000] rounded-[47px] flex items-center justify-center"
+            style={{
+              width: "162px",
+              height: "47px",
+              left: "0px",
+              top: "250px", // 126 + 120 + ~4 spacing ≈ 376px Figma
+            }}
           >
             <span className="font-inter font-semibold text-[16px] text-white">
               Xem chi tiết

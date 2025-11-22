@@ -1,4 +1,3 @@
-import { Header } from "../components/layout/Header";
 import { HomeBanner } from "../features/home/HomeBanner"; // <--- IMPORT
 import { HomeExperience } from "../features/home/HomeExperience";
 import { HomeProcess } from "../features/home/HomeProcess";
@@ -13,9 +12,6 @@ export const HomePage = () => {
       className="relative bg-white"
       style={{ width: "1440px", minHeight: "100vh" }}
     >
-      {/* Header luôn nằm trên cùng */}
-      <Header />
-
       {/* Banner chính của trang chủ */}
       <HomeBanner />
 
@@ -37,7 +33,7 @@ export const HomePage = () => {
       <div style={{ marginTop: "100px" }}>
         <HomeExperience />
       </div>
-      <div>
+      <div style={{ marginTop: "20px" }}>
         <HomeProcess />
       </div>
     </div>
