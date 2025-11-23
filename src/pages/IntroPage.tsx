@@ -8,13 +8,15 @@ import { MachinerySystem } from "../features/introduction/machinery/MachinerySys
 import { OurCustomer } from "../features/introduction/customer/OurCustomer";
 import { OurAwards } from "../features/introduction/achievements/OurAwards"; // <--- Import mới
 import { LatestNews } from "../features/introduction/news/LatestNews";
-=======
-import { ContactBanner } from "../components/layout/ContactBanner";
 
+import { ContactBanner } from "../components/layout/ContactBanner";
 
 export const IntroPage = () => {
   return (
-    <div className="w-full flex flex-col items-center pb-[100px]">
+    <div
+      className="relative bg-white"
+      style={{ width: "1440px", minHeight: "100vh" }}
+    >
       <IntroductionHero />
 
       <div style={{ marginTop: "114px" }}>
@@ -25,7 +27,7 @@ export const IntroPage = () => {
         <History />
       </div>
 
-      <div style={{ marginTop: "85px" }}>
+      <div>
         <OurTeam />
       </div>
 
@@ -44,7 +46,7 @@ export const IntroPage = () => {
       </div>
 
       {/* Tin tức */}
-      <div style={{ marginTop: "140px", marginBottom: "140px" }}>
+      <div style={{ marginBottom: "100px" }}>
         <LatestNews />
       </div>
       <ContactBanner />
