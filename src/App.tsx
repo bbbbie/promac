@@ -1,28 +1,38 @@
 // src/App.tsx
 import { Routes, Route } from "react-router-dom";
+import { Header } from "./components/layout/Header";
+import { Footer } from "./components/layout/Footer";
 import { HomePage } from "./pages/HomePage";
 import { IntroPage } from "./pages/IntroPage";
-import { Footer } from "./components/layout/Footer";
+import { ContactPage } from "./pages/ContactPage";
+
 function App() {
   return (
-    // --- SỬA LỖI TẠI ĐÂY ---
-    // 1. Thêm 'flex-col': Để nội dung xếp dọc
-    // 2. Thêm 'items-center': Để căn giữa giao diện
-    // 3. Thêm 'pt-[3px]': Để tạo khoảng cách nhỏ trên cùng giống thiết kế
-    <main className="min-h-screen w-full bg-black flex flex-col items-center justify-start overflow-x-hidden pt-[0px]">
-      {/* KHU VỰC ĐỊNH TUYẾN (ROUTING) */}
-      <Routes>
-        {/* 1. Trang Chủ (Mặc định) */}
-        <Route path="/" element={<HomePage />} />
+    <main className="min-h-screen w-full bg-black flex flex-col items-center overflow-x-hidden ">
+      <div
+        className="bg-white flex flex-col relative shadow-2xl"
+        style={{
+          width: "1440px",
+          minHeight: "100vh",
+          maxWidth: "100%",
+          marginBottom: 0,
+        }}
+      >
+        <Header />
 
-        {/* 2. Trang Giới Thiệu (Khi bấm Về Promac) */}
-        <Route path="/gioi-thieu" element={<IntroPage />} />
+        <div className="flex-grow flex flex-col w-full">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/gioi-thieu" element={<IntroPage />} />
+            <Route path="/lien-he" element={<ContactPage />} />
+          </Routes>
+        </div>
 
-        {/* Các trang khác chưa làm thì để tạm HomePage hoặc trang 404 */}
-        <Route path="*" element={<HomePage />} />
-      </Routes>
-      {/* 3. ĐẶT FOOTER Ở ĐÂY ĐỂ HIỂN THỊ CHO MỌI TRANG */}
-      <Footer />
+        {/* Footer */}
+        <div className="w-full overflow-hidden">
+          <Footer />
+        </div>
+      </div>
     </main>
   );
 }
