@@ -38,13 +38,12 @@ export const Header = () => {
           paddingLeft: "93px",
           paddingRight: "93px",
           boxShadow: "0px 4px 12px 0px #00000040",
-          // marginLeft: "3px", // Tạm bỏ để căn giữa tự nhiên
         }}
       >
         <nav
           className="flex items-center"
           style={{
-            marginLeft: "131px",
+            marginLeft: "70px",
             gap: "40px",
           }}
         >

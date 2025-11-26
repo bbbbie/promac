@@ -71,7 +71,7 @@ export const NewsListing: React.FC = () => {
         </h2>
         <p
           className="font-semibold text-[#000000] mt-[20px]"
-          style={{ fontFamily: "Inter", fontSize: "20px", lineHeight: "24px" }}
+          style={{ fontFamily: "inter", fontSize: "20px", lineHeight: "24px" }}
         >
           Khám phá danh mục sản phẩm đa dạng của chúng tôi, thể hiện chất lượng
           in ấn vượt trội trên nhiều lĩnh vực và ngành nghề khác nhau.{" "}

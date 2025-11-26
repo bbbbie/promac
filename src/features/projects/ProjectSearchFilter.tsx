@@ -59,7 +59,7 @@ export const ProjectSearchFilter: React.FC<Props> = ({ onSearch }) => {
         <div className="w-full h-full border border-[#4D80C4] rounded-[6px] bg-white flex items-center pl-[20px] pr-[60px]">
           <input
             type="text"
-            placeholder="Tìm kiếm dự án..."
+            placeholder="Chọn chủ đề hoặc gõ từ khóa"
             value={inputValue}
             onChange={handleChange}
             onClick={() => setIsOpen(true)}

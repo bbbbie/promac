@@ -9,6 +9,8 @@ import { NewsPage } from "./pages/news/NewsPage";
 import { NewsDetailPage } from "./pages/news/NewsDetailPage";
 import { ProjectPage } from "./pages/project/ProjectPage";
 import { ProjectDetailPage } from "./pages/project/ProjectDetailPage";
+import { ProductPage } from "./pages/product/ProductPage";
+import { ProductDetailPage } from "./pages/product/ProductDetailPage";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
             <Route path="/tin-tuc/:slug" element={<NewsDetailPage />} />{" "}
             <Route path="/du-an" element={<ProjectPage />} />
             <Route path="/du-an/:slug" element={<ProjectDetailPage />} />
+            <Route path="/san-pham" element={<ProductPage />} />
+            <Route path="/san-pham/:slug" element={<ProductDetailPage />} />
           </Routes>
         </div>
 
