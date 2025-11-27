@@ -1,3 +1,4 @@
+// src/components/layout/ServicesDropdown.tsx
 import {
   Popover,
   PopoverButton,
@@ -8,11 +9,8 @@ import { ChevronDown } from "lucide-react";
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "../../lib/utils";
-
-// Import ảnh (Đảm bảo đường dẫn đúng)
 import promacQrImage from "../../assets/qr.jpg";
 
-// --- 1. ĐỊNH NGHĨA TYPE (Để fix lỗi 'any') ---
 type ServiceItem = {
   label: string;
   path: string;
@@ -24,8 +22,9 @@ type Column = {
   items: ServiceItem[];
 };
 
-// --- 2. KHAI BÁO DỮ LIỆU (Để fix lỗi 'Cannot find name COLUMNS') ---
+// --- DỮ LIỆU MENU ---
 const COLUMNS: Column[] = [
+  // Index 0
   {
     title: "DỊCH VỤ CỐT LÕI",
     items: [
@@ -35,6 +34,7 @@ const COLUMNS: Column[] = [
       { label: "In tem nhãn decal", path: "/in-tem-nhan" },
     ],
   },
+  // Index 1
   {
     title: "CÁC DỊCH VỤ KHÁC",
     items: [
@@ -44,56 +44,60 @@ const COLUMNS: Column[] = [
       { label: "In thẻ cào ráp chữ", path: "/the-cao-rap-chu" },
     ],
   },
+  // Index 2
   {
     title: "SẢN PHẨM",
     items: [{ label: "Danh mục sản phẩm", path: "/san-pham" }],
   },
+  // Index 3 - CHÍNH SÁCH (Sửa path cho đúng với App.tsx)
   {
     title: "CHÍNH SÁCH",
     items: [
-      { label: "Điều khoản dịch vụ", path: "/dieu-khoan" },
-      { label: "Bảo mật thông tin", path: "/bao-mat" },
-      { label: "Vận chuyển & Giao nhận", path: "/van-chuyen" },
-      { label: "Đổi trả hàng hóa", path: "/doi-tra" },
-      { label: "Quy trình làm việc", path: "/quy-trinh" },
+      { label: "Điều khoản dịch vụ", path: "/chinh-sach/dieu-khoan" },
+      { label: "Bảo mật thông tin", path: "/chinh-sach/bao-mat" },
+      { label: "Vận chuyển & Giao nhận", path: "/chinh-sach/van-chuyen" },
+      { label: "Đổi trả hàng hóa", path: "/chinh-sach/doi-tra" },
+      { label: "Quy trình làm việc", path: "/chinh-sach/quy-trinh" },
     ],
   },
 ];
 
-export const ServicesDropdown = () => {
+interface ServicesDropdownProps {
+  label: string;
+}
+
+export const ServicesDropdown = ({ label }: ServicesDropdownProps) => {
   const location = useLocation();
 
-  // Logic kiểm tra: Nếu URL hiện tại thuộc nhóm Dịch vụ thì Active
-  const isActive = COLUMNS.some((col) =>
+  const displayColumns =
+    label === "CHÍNH SÁCH"
+      ? [COLUMNS[3]]
+      : [COLUMNS[0], COLUMNS[1], COLUMNS[2]];
+
+  const isActive = displayColumns.some((col) =>
     col.items.some((item) => {
-      // 1. Trùng khớp hoàn toàn (VD: đang ở trang danh mục /san-pham)
       if (item.path === location.pathname) return true;
-
-      // 2. Là trang con (VD: đang ở /san-pham/chi-tiet-san-pham-a)
-      // Logic: Đường dẫn hiện tại bắt đầu bằng "path cha" + dấu "/"
-      // Ví dụ: "/san-pham/..." bắt đầu bằng "/san-pham/"
       if (location.pathname.startsWith(`${item.path}/`)) return true;
-
       return false;
     })
   );
 
   return (
-    <Popover>
+    // 1. QUAN TRỌNG: XÓA className="relative" ở đây đi
+    // Để Panel nó định vị theo thẻ Header cha (vốn đã relative) chứ không theo nút này
+    <Popover className="">
       {({ open }) => (
         <>
-          {/* BUTTON TRIGGER */}
           <PopoverButton
             className={cn(
               "flex items-center justify-center gap-[5px] outline-none transition-colors duration-200",
               "font-inter font-bold text-[18px] leading-[100%]",
-              // Nếu đang mở menu (open) HOẶC đang ở trang con (isActive) -> Tô Đỏ
               open || isActive
                 ? "text-[#FF0000] underline decoration-solid"
                 : "text-[#000000] hover:text-[#FF0000]"
             )}
           >
-            <span className="block pt-[2px]">DỊCH VỤ & SẢN PHẨM</span>
+            <span className="block pt-[2px] uppercase">{label}</span>
             <div className="w-[20px] h-[20px] flex items-center justify-center">
               <ChevronDown
                 size={20}
@@ -107,7 +111,6 @@ export const ServicesDropdown = () => {
             </div>
           </PopoverButton>
 
-          {/* DROPDOWN PANEL */}
           <Transition
             as={Fragment}
             enter="transition ease-out duration-200"
@@ -117,28 +120,31 @@ export const ServicesDropdown = () => {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            {/* 2. CHỈNH SỬA VỊ TRÍ PANEL */}
             <PopoverPanel
               className="absolute z-50 bg-white"
               style={{
-                // Header cao 102px -> Top = 102px để nằm ngay dưới đáy header
-                top: "102px",
-                // Left = 0 để bắt đầu từ mép trái của Header
-                left: "0px",
-                // Width = 100% để rộng bằng đúng Header (1434px)
-                width: "100%",
+                // 2. FIX VỊ TRÍ TUYỆT ĐỐI:
+                top: "102px", // Nằm ngay dưới Header
+                left: "0px", // Bắt đầu từ mép trái của Header
+                width: "1434px", // Rộng bằng Header
                 height: "280px",
                 borderTop: "1px solid #E3E7EF",
                 boxShadow: "0px 10px 20px rgba(0,0,0,0.05)",
                 padding: "30px 30px",
-                // Quan trọng: Để đảm bảo nó đè lên các thành phần khác
                 boxSizing: "border-box",
               }}
             >
-              <div className="flex w-full h-full items-start justify-between">
-                {/* --- TEXT LINKS --- */}
+              {/* Thêm padding-left lớn hơn nếu là Chính Sách để căn giữa đẹp hơn */}
+              <div
+                className="flex w-full h-full items-start gap-[60px]"
+                // Logic căn giữa: Nếu là Chính sách (ít cột) thì căn giữa, còn Dịch vụ thì căn start
+                style={{
+                  justifyContent: label === "CHÍNH SÁCH" ? "center" : "center",
+                }}
+              >
+                {/* RENDER CÁC CỘT */}
                 <div className="flex gap-[40px]">
-                  {COLUMNS.map((col, index) => (
+                  {displayColumns.map((col, index) => (
                     <div
                       key={index}
                       className="flex flex-col w-[256px] gap-[20px]"
@@ -169,7 +175,7 @@ export const ServicesDropdown = () => {
                   ))}
                 </div>
 
-                {/* --- QR IMAGE --- */}
+                {/* ẢNH QR (Luôn hiện bên phải để cân đối layout) */}
                 <div
                   className="relative flex flex-col items-center justify-center"
                   style={{

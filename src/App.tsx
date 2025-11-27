@@ -11,6 +11,9 @@ import { ProjectPage } from "./pages/project/ProjectPage";
 import { ProjectDetailPage } from "./pages/project/ProjectDetailPage";
 import { ProductPage } from "./pages/product/ProductPage";
 import { ProductDetailPage } from "./pages/product/ProductDetailPage";
+import { TermsOfServicePage } from "./pages/termsofservice/TermsOfServicePage";
+import { PrivacyPolicyPage } from "./pages/privacypolicy/PrivacyPolicyPage";
+import { WorkingProcessPage } from "./pages/workingprocess/WorkingProcessPage";
 
 function App() {
   return (
@@ -37,6 +40,17 @@ function App() {
             <Route path="/du-an/:slug" element={<ProjectDetailPage />} />
             <Route path="/san-pham" element={<ProductPage />} />
             <Route path="/san-pham/:slug" element={<ProductDetailPage />} />
+
+            <Route
+              path="/chinh-sach/dieu-khoan"
+              element={<TermsOfServicePage />}
+            />
+            <Route path="/chinh-sach/bao-mat" element={<PrivacyPolicyPage />} />
+            <Route
+              path="/chinh-sach/quy-trinh"
+              element={<WorkingProcessPage />}
+            />
+
           </Routes>
         </div>
 

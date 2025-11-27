@@ -16,7 +16,7 @@ const NAV_ITEMS: NavItemType[] = [
   { label: "TRANG CHỦ", path: "/", type: "link" },
   // Chuyển mục này thành dropdown
   { label: "DỊCH VỤ & SẢN PHẨM", path: "#", type: "dropdown" },
-  { label: "CHÍNH SÁCH", path: "/chinh-sach", hasArrow: true, type: "link" },
+  { label: "CHÍNH SÁCH", path: "#", hasArrow: true, type: "dropdown" },
   { label: "DỰ ÁN", path: "/du-an", type: "link" },
   { label: "VỀ PROMAC", path: "/gioi-thieu", type: "link" },
   { label: "TIN TỨC", path: "/tin-tuc", type: "link" },
@@ -50,7 +50,7 @@ export const Header = () => {
           {NAV_ITEMS.map((item, index) => {
             // 1. Nếu là Dropdown -> Render Component ServicesDropdown
             if (item.type === "dropdown") {
-              return <ServicesDropdown key={index} />;
+              return <ServicesDropdown key={index} label={item.label} />;
             }
 
             // 2. Nếu là Link thường -> Render NavLink

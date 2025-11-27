@@ -286,7 +286,7 @@ export const ContactForm: React.FC = () => {
           }}
         >
           <h3
-            className="font-bold text-black text-center mb-[40px]"
+            className="font-bold text-black text-center mb-[40px] ml-[-270px]"
             style={{
               fontFamily: "Inter",
               fontSize: "30px",
