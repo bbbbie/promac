@@ -44,13 +44,13 @@ const COLUMNS: Column[] = [
       },
       {
         label: "In thẻ cào kích hoạt dịch vụ",
-        path: "/dich-vu-khac/the-cao-kich-hoat",
+        path: "/dich-vu-khac/in-the-cao-kich-hoat",
       },
       {
         label: "In thẻ cào trúng thưởng",
         path: "/dich-vu-khac/in-the-cao-trung-thuong",
       },
-      { label: "In thẻ cào ráp chữ", path: "/dich-vu-khac/the-cao-rap-chu" },
+      { label: "In thẻ cào ráp chữ", path: "/dich-vu-khac/in-the-cao-rap-chu" },
     ],
   },
   // Index 2
