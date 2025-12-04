@@ -1,14 +1,24 @@
+//src/features/products/ProductListing.tsx
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { ProjectSearchFilter } from "../projects/ProjectSearchFilter";
 
-// 1. DỮ LIỆU MẪU
-const PRODUCT_DATA = Array.from({ length: 26 }).map((_, i) => ({
+// --- IMPORT HÌNH ẢNH SẢN PHẨM ---
+import product1 from "../../assets/products/product1.png";
+import product2 from "../../assets/products/product2.png";
+import product3 from "../../assets/products/product3.png";
+
+// Danh sách ảnh để lặp
+const productImages = [product1, product2, product3];
+
+// 1. DỮ LIỆU MẪU (Tăng lên 60 sản phẩm để đủ 5 trang)
+const PRODUCT_DATA = Array.from({ length: 60 }).map((_, i) => ({
   id: i + 1,
-  title: "Our SaaS Product Just Launched! Our SaaS Product Just Launched!...",
+  title: `Sản phẩm số ${i + 1}: Our SaaS Product Just Launched!`, // Thêm số để dễ phân biệt
   slug: `san-pham-so-${i + 1}`,
-  image: "bg-gray-200",
+  // Lấy ảnh theo vòng lặp 1, 2, 3...
+  image: productImages[i % productImages.length],
   oldPrice: "45.000đ",
   newPrice: "39.000đ/cái",
 }));
@@ -23,6 +33,7 @@ export const ProductListing: React.FC = () => {
   const filteredProducts = PRODUCT_DATA.filter((item) =>
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentProducts = filteredProducts.slice(
@@ -59,7 +70,7 @@ export const ProductListing: React.FC = () => {
   return (
     <section className="w-full flex flex-col items-center">
       {/* =================================================================
-          1. MOBILE VERSION (< 1024px) - THEO FIGMA MỚI
+          1. MOBILE VERSION (< 1024px)
           ================================================================= */}
       <div className="flex flex-col items-center w-full lg:hidden px-[20px] pt-[40px] pb-[60px]">
         {/* HEADER MOBILE */}
@@ -73,7 +84,7 @@ export const ProductListing: React.FC = () => {
           </p>
         </div>
 
-        {/* SEARCH BAR MOBILE (Figma Style) */}
+        {/* SEARCH BAR MOBILE */}
         <div className="w-[322px] h-[56px] relative mb-[40px]">
           <div className="w-full h-full border border-[#4D80C4] rounded-[6px] bg-white flex items-center pl-[20px] pr-[60px]">
             <input
@@ -88,7 +99,7 @@ export const ProductListing: React.FC = () => {
           </button>
         </div>
 
-        {/* PRODUCT LIST MOBILE (Vertical 1 Column) */}
+        {/* PRODUCT LIST MOBILE */}
         <div className="flex flex-col gap-[40px] w-full items-center mb-[40px]">
           {currentProducts.map((item) => (
             <div
@@ -98,9 +109,11 @@ export const ProductListing: React.FC = () => {
             >
               {/* Image */}
               <div className="w-full h-[230px] bg-[#F2F2F2] rounded-[4px] relative overflow-hidden mb-[8px]">
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-400">Image {item.id}</span>
-                </div>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Title */}
@@ -121,7 +134,7 @@ export const ProductListing: React.FC = () => {
           ))}
         </div>
 
-        {/* BUTTON "Xem tất cả" (MOBILE nằm dưới cùng) */}
+        {/* BUTTON MOBILE */}
         <button className="flex items-center justify-center bg-[#FF0000] rounded-[47px] w-[132px] h-[45px] shadow-lg active:scale-95 transition-transform">
           <span className="font-inter font-semibold text-[16px] text-white tracking-[-0.02em]">
             Xem thêm
@@ -130,7 +143,7 @@ export const ProductListing: React.FC = () => {
       </div>
 
       {/* =================================================================
-          2. DESKTOP VERSION (>= 1024px) - GIỮ NGUYÊN CODE CŨ
+          2. DESKTOP VERSION (>= 1024px)
           ================================================================= */}
       <div className="hidden lg:flex flex-col items-center w-full">
         {/* TITLE */}
@@ -178,9 +191,11 @@ export const ProductListing: React.FC = () => {
               >
                 {/* 1. Image */}
                 <div className="w-[380px] h-[266px] bg-[#F2F2F2] rounded-[4px] relative overflow-hidden shrink-0">
-                  <div className="w-full h-full bg-gray-200 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                    <span className="text-gray-400">Image {item.id}</span>
-                  </div>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
 
                 {/* 2. Title */}
@@ -235,7 +250,7 @@ export const ProductListing: React.FC = () => {
                       textAlign: "center",
                       letterSpacing: "0.1px",
                       color: "#BDBDBD",
-                      textDecoration: "none",
+                      textDecoration: "line-through",
                     }}
                   >
                     {item.oldPrice}
@@ -288,11 +303,11 @@ export const ProductListing: React.FC = () => {
                     key={pageNum}
                     onClick={() => handlePageChange(pageNum)}
                     className={`w-[40px] h-[40px] flex items-center justify-center border rounded-[10px] font-inter text-[14px] transition-all
-                                    ${
-                                      isActive
-                                        ? "border-[#FF0000] text-[#FF0000] font-bold"
-                                        : "border-[#828282] text-[#828282] hover:bg-gray-100"
-                                    }`}
+                      ${
+                        isActive
+                          ? "border-[#FF0000] text-[#FF0000] font-bold"
+                          : "border-[#828282] text-[#828282] hover:bg-gray-100"
+                      }`}
                   >
                     {pageNum}
                   </button>

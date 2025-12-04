@@ -137,7 +137,7 @@ export const IntroductionHero = () => {
             width: "732.86px",
             height: "64px",
             top: "53px", // +53px relative to group
-            left: "16.79px", // Adjust for absolute positioning
+            left: "80px", // Adjust for absolute positioning
             fontSize: "36px",
             lineHeight: "64px",
             color: "#FF0000",
@@ -152,7 +152,7 @@ export const IntroductionHero = () => {
             width: "698.29px",
             height: "46px",
             top: "137px", // 53 + 84
-            left: "16.79px",
+            left: "80px",
             fontSize: "16px",
             lineHeight: "19px",
             color: "#374151",
@@ -166,7 +166,7 @@ export const IntroductionHero = () => {
           style={{
             width: "208.4px",
             height: "53px",
-            left: "16.79px",
+            left: "80px",
             top: "209px", // 53 + 156
             backgroundColor: "#FF0000",
             borderRadius: "20px",
@@ -183,7 +183,7 @@ export const IntroductionHero = () => {
           style={{
             width: "481px",
             height: "0px",
-            left: "0px",
+            left: "70px",
             top: "389.51px", // 53 + 336.51
             borderTop: "1px solid rgba(0, 0, 0, 0.5)",
           }}
@@ -192,7 +192,7 @@ export const IntroductionHero = () => {
         <div
           className="absolute flex items-center"
           style={{
-            left: "20.6px",
+            left: "80px",
             top: "413px", // 53 + 360
             height: "21px",
           }}
@@ -230,7 +230,7 @@ export const IntroductionHero = () => {
         <div
           className="absolute flex items-center"
           style={{
-            left: "20.74px",
+            left: "80px",
             top: "453px", // 53 + 400
             height: "21.07px",
           }}

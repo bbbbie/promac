@@ -1,17 +1,49 @@
+//src/features/projects/ProjectListing.tsx
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { ProjectSearchFilter } from "./ProjectSearchFilter";
 
-// Dữ liệu giả: 26 Dự án
-const PROJECT_DATA = Array.from({ length: 26 }).map((_, i) => ({
+// --- IMPORT 12 HÌNH ẢNH DỰ ÁN ---
+import project1 from "../../assets/projects/project1.png";
+import project2 from "../../assets/projects/project2.png";
+import project3 from "../../assets/projects/project3.png";
+import project4 from "../../assets/projects/project4.png";
+import project5 from "../../assets/projects/project5.png";
+import project6 from "../../assets/projects/project6.png";
+import project7 from "../../assets/projects/project7.png";
+import project8 from "../../assets/projects/project8.png";
+import project9 from "../../assets/projects/project9.png";
+import project10 from "../../assets/projects/project10.png";
+import project11 from "../../assets/projects/project11.png";
+import project12 from "../../assets/projects/project12.png";
+
+// Danh sách ảnh để lặp
+const projectImages = [
+  project1,
+  project2,
+  project3,
+  project4,
+  project5,
+  project6,
+  project7,
+  project8,
+  project9,
+  project10,
+  project11,
+  project12,
+];
+
+// DỮ LIỆU GIẢ: 60 Dự án (Full 5 trang)
+const PROJECT_DATA = Array.from({ length: 60 }).map((_, i) => ({
   id: i + 1,
   date: "August 2024",
   client: "Vinamilk Corp",
   title: `Dự án số ${i + 1}: Thiết kế bao bì hộp sữa cao cấp`,
   slug: `du-an-so-${i + 1}`,
   desc: "Dự án thiết kế và in ấn bao bì hộp cứng 5 lớp với công nghệ in UV định hình, đảm bảo độ bền và tính thẩm mỹ cao cho sản phẩm.",
-  image: "bg-gray-200",
+  // Lấy ảnh theo vòng lặp 12 ảnh
+  image: projectImages[i % projectImages.length],
   tag: i % 2 === 0 ? "Bao bì" : "In ấn",
 }));
 
@@ -84,7 +116,7 @@ export const ProjectListing: React.FC = () => {
           </p>
         </div>
 
-        {/* SEARCH BAR MOBILE (Sử dụng lại kiểu News Search) */}
+        {/* SEARCH BAR MOBILE */}
         <div className="w-[322px] h-[56px] relative mb-[40px]">
           <div className="w-full h-full border border-[#4D80C4] rounded-[6px] bg-white flex items-center pl-[12px] pr-[60px]">
             <input
@@ -99,7 +131,7 @@ export const ProjectListing: React.FC = () => {
           </button>
         </div>
 
-        {/* PROJECT LIST MOBILE (Vertical 1 Column) */}
+        {/* PROJECT LIST MOBILE */}
         <div className="flex flex-col gap-[40px] w-full items-center mb-[40px]">
           {currentProjects.map((item) => (
             <div
@@ -107,11 +139,13 @@ export const ProjectListing: React.FC = () => {
               onClick={() => goToDetail(item.slug)}
               className="flex flex-col w-[326px] cursor-pointer group"
             >
-              {/* Thumbnail */}
+              {/* Thumbnail - Ảnh thật */}
               <div className="w-full h-[230px] bg-[#F2F2F2] rounded-[4px] relative overflow-hidden mb-[12px]">
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-400">Project Img</span>
-                </div>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Content */}
@@ -186,10 +220,10 @@ export const ProjectListing: React.FC = () => {
       </div>
 
       {/* =================================================================
-          2. DESKTOP VERSION (>= 1024px) - GIỮ NGUYÊN CODE CŨ
+          2. DESKTOP VERSION (>= 1024px)
           ================================================================= */}
       <div className="hidden lg:flex flex-col items-center">
-        {/* TITLE */}
+        {/* TITLE & SEARCH */}
         <div className="flex flex-col items-center text-center mt-[100px] mb-[80px] w-[1074px]">
           <h2
             className="font-bold text-[#0E0E0E]"
@@ -204,7 +238,7 @@ export const ProjectListing: React.FC = () => {
           <p
             className="font-semibold text-[#000000] mt-[20px]"
             style={{
-              fontFamily: "Inter",
+              fontFamily: "inter",
               fontSize: "20px",
               lineHeight: "24px",
             }}
@@ -214,7 +248,6 @@ export const ProjectListing: React.FC = () => {
           </p>
         </div>
 
-        {/* SEARCH */}
         <div className="mb-[100px]">
           <ProjectSearchFilter onSearch={handleSearchFilter} />
         </div>
@@ -231,21 +264,23 @@ export const ProjectListing: React.FC = () => {
                 className="flex flex-col w-[380px] group cursor-pointer"
                 onClick={() => goToDetail(item.slug)}
               >
-                {/* Thumbnail */}
+                {/* Thumbnail - Ảnh thật */}
                 <div className="w-full h-[268px] bg-[#F2F2F2] rounded-[4px] mb-[20px] relative overflow-hidden">
-                  <div className="w-full h-full bg-gray-200 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                    <span className="text-gray-400">Project {item.id}</span>
-                  </div>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
 
                 {/* Content */}
                 <div className="flex flex-col">
                   <div className="flex items-center gap-[4px] mb-[12px]">
-                    <span className="font-inter font-semibold text-[18px] text-[#4F4F4F]">
+                    <span className="font-inter font-semibold text-[18px] text-[#4F4F4F] tracking-[-0.02em]">
                       {item.date}
                     </span>
                     <span className="mx-1">|</span>
-                    <span className="font-inter font-semibold text-[18px] text-[#4F4F4F]">
+                    <span className="font-inter font-semibold text-[18px] text-[#4F4F4F] tracking-[-0.02em]">
                       {item.client}
                     </span>
                   </div>

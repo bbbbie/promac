@@ -1,22 +1,17 @@
-// src/features/termsofservice/TermsContent.tsx
 import React from "react";
-
-// --- IMPORT HÌNH ẢNH TỪ THƯ MỤC POLICY ---
 import policy1Img from "../../../assets/policy/policy1.png";
 import policy2Img from "../../../assets/policy/policy2.jpg";
 import policy4Img from "../../../assets/policy/policy4.jpg";
 import policy6Img from "../../../assets/policy/policy6.jpg";
 
-// Dữ liệu các điều khoản
-// Lưu ý: Tôi đã thêm dấu "-" vào trước các dòng cần hiển thị dấu chấm tròn (bullet point)
 const TERMS_DATA = [
   {
     id: 1,
     title: "ĐIỀU 1: THÔNG TIN KHÁCH HÀNG CHÍNH XÁC",
     content: [
-      "Khi đặt hàng, quý khách vui lòng cung cấp đầy đủ thông tin về tên, địa chỉ, email, số điện thoại,… Đây là những thông tin bắt buộc.",
-      "- Quý khách hàng phải cung cấp đầy đủ thông tin để Promac căn cứ theo đó mà phục vụ quý khách một cách tốt nhất và đảm bảo Tiến độ SLA (Service Level Agreement) cho đơn hàng.",
-      "- Những trường hợp điền thiếu thông tin hoặc thông tin sai sự thật có thể ảnh hưởng đến chất lượng chế bản hoặc thời gian giao hàng và sẽ không được Promac giải quyết.",
+      "Khi đặt hàng, quý khách vui lòng cung cấp đầy đủ thông tin...",
+      "- Quý khách hàng phải cung cấp đầy đủ thông tin...",
+      "- Những trường hợp điền thiếu thông tin...",
     ],
     image: policy1Img,
   },
@@ -24,27 +19,25 @@ const TERMS_DATA = [
     id: 2,
     title: "ĐIỀU 2: BẢO MẤT THÔNG TIN KHÁCH HÀNG",
     content: [
-      "Mọi thông tin cá nhân của khách hàng sẽ được Promac bảo mật và cam kết không tiết lộ, mua bán hay trao đổi những thông tin này với bất kỳ một bên thứ ba nào khác.",
-      "Nguyên tắc Bảo mật Nâng cao: Đối với các đơn hàng liên quan đến Mã Code Biến đổi (Thẻ Cào, Voucher), chúng tôi áp dụng quy trình bảo mật khép kín nghiêm ngặt nhất.",
-      "Trong trường hợp cơ quan pháp luật yêu cầu bằng văn bản, chúng tôi sẽ buộc phải cung cấp những thông tin này cho các cơ quan pháp luật có thẩm quyền.",
+      "Mọi thông tin cá nhân của khách hàng...",
+      "Nguyên tắc Bảo mật Nâng cao...",
+      "Trong trường hợp cơ quan pháp luật...",
     ],
     image: policy2Img,
   },
   {
     id: 3,
     title: "ĐIỀU 3: CAM KẾT SẢN PHẨM TRÍ TUỆ",
-    content: [
-      "Công ty Promac cam kết sáng tạo và cung cấp dịch vụ sản phẩm trí tuệ, không sử dụng lặp lại mẫu mã hoặc thiết kế độc quyền của khách hàng A cho khách hàng B.",
-    ],
+    content: ["Công ty Promac cam kết sáng tạo..."],
     image: null,
   },
   {
     id: 4,
     title: "ĐIỀU 4: BÀN GIAO DỮ LIỆU & LƯU TRỮ FILE GỐC",
     content: [
-      "Sau khi hoàn thiện và nghiệm thu đơn hàng (bao gồm các file thiết kế, chế bản cuối cùng), Promac sẽ bàn giao dữ liệu gốc.",
-      "Quý khách hàng vui lòng lưu trữ lại file gốc của thiết kế. Promac không có trách nhiệm lưu trữ dữ liệu cho khách hàng sau khi đã bàn giao.",
-      "Trường hợp khách hàng có nhu cầu lưu trữ dài hạn, vui lòng liên hệ bộ phận Kỹ thuật của Promac để thỏa thuận dịch vụ lưu trữ.",
+      "Sau khi hoàn thiện và nghiệm thu đơn hàng...",
+      "Quý khách hàng vui lòng lưu trữ lại file gốc...",
+      "Trường hợp khách hàng có nhu cầu lưu trữ dài hạn...",
     ],
     image: policy4Img,
   },
@@ -52,8 +45,8 @@ const TERMS_DATA = [
     id: 5,
     title: "ĐIỀU 5: LƯU TRỮ HÀNG HOÁ VẬT LÝ",
     content: [
-      "Đối với những đơn hàng đã hoàn tất hoặc chưa hoàn tất (thành phẩm), Promac chỉ lưu trữ hàng in ấn trong vòng tối đa 1 tháng, sau đó đơn hàng sẽ được tiêu hủy.",
-      "- Nếu khách hàng có nhu cầu nhờ lưu trữ hàng hóa lâu hơn (quá 1 tháng), vui lòng liên hệ với bộ phận kinh doanh của Promac để thỏa thuận.",
+      "Đối với những đơn hàng đã hoàn tất...",
+      "- Nếu khách hàng có nhu cầu nhờ lưu trữ...",
     ],
     image: null,
   },
@@ -61,27 +54,73 @@ const TERMS_DATA = [
     id: 6,
     title: "ĐIỀU 6: NỘI DUNG VI PHẠM & PHÁP LÝ",
     content: [
-      "Công ty Promac có quyền từ chối hoặc phủ định trách nhiệm đối với các đơn hàng vi phạm các mục sau:",
-      "- Cung cấp nội dung cá nhân sai hoặc cố tình spam.",
-      "- Nội dung in ấn tuyên truyền, chống phá và xuyên tạc chính quyền, hoặc các nội dung liên quan đến chính trị, tôn giáo, thuần phong mỹ tục trái pháp luật.",
+      "Công ty Promac có quyền từ chối...",
+      "- Cung cấp nội dung cá nhân sai...",
+      "- Nội dung in ấn tuyên truyền...",
     ],
     image: policy6Img,
   },
   {
     id: 7,
     title: "ĐIỀU 7: CẬP NHẬP NỘI DUNG",
-    content: [
-      "Công ty Promac có thể thay đổi, bổ sung hoặc sửa chữa các điều khoản trên bất cứ lúc nào và sẽ công bố rõ trên Website promacprinting.com.",
-    ],
+    content: ["Công ty Promac có thể thay đổi..."],
     image: null,
   },
 ];
 
 export const TermsContent: React.FC = () => {
   return (
-    <section className="w-full flex justify-center pb-[100px]">
+    <section className="w-full flex justify-center pb-[60px] lg:pb-[100px]">
+      {/* MOBILE */}
+      <div className="flex flex-col items-center w-full lg:hidden px-[20px]">
+        <div className="flex flex-col items-center bg-white rounded-[50px] shadow-[0px_12px_8px_rgba(0,0,0,0.25)] w-full max-w-[375px] px-[23px] py-[47px]">
+          <h2 className="font-inter font-bold text-[28px] leading-[34px] text-[#000000] text-center mb-[40px]">
+            Điều Khoản Dịch Vụ
+          </h2>
+          <div className="flex flex-col gap-[40px] w-full">
+            {TERMS_DATA.map((term) => (
+              <div key={term.id} className="flex flex-col w-full items-end">
+                {/* Title Mobile - ĐÃ SỬA text-left */}
+                <div className="relative w-full h-[45px] mb-[24px]">
+                  <div className="absolute left-[4px] top-0 w-[3px] h-[31px] bg-[#FF0000] -rotate-1"></div>
+                  <h3 className="mr-[-30px] absolute right-0 top-[1px] w-[306px] font-roboto font-extrabold text-[18px] leading-[120%] text-[#FF0000] uppercase text-left">
+                    {term.title}
+                  </h3>
+                </div>
+                <div className="w-full mb-[24px]">
+                  {term.content.map((paragraph, idx) => {
+                    const isBullet = paragraph.trim().startsWith("-");
+                    const displayText = isBullet
+                      ? paragraph.replace("-", "").trim()
+                      : paragraph;
+                    return (
+                      <p
+                        key={idx}
+                        className="font-inter font-normal text-[15px] leading-[28px] text-[#000000] mb-[10px] text-left"
+                      >
+                        {isBullet ? `• ${displayText}` : displayText}
+                      </p>
+                    );
+                  })}
+                </div>
+                {term.image && (
+                  <div className="w-full h-[159px] rounded-[12px] overflow-hidden bg-gray-200">
+                    <img
+                      src={term.image}
+                      alt={term.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* DESKTOP */}
       <div
-        className="relative bg-white flex flex-col items-center"
+        className="hidden lg:flex relative bg-white flex-col items-center"
         style={{
           width: "1376px",
           minHeight: "1000px",
@@ -90,7 +129,6 @@ export const TermsContent: React.FC = () => {
           padding: "50px 60px 80px 60px",
         }}
       >
-        {/* --- TIÊU ĐỀ CHÍNH --- */}
         <h2
           className="font-inter font-semibold text-center text-[#253D4E]"
           style={{
@@ -102,12 +140,9 @@ export const TermsContent: React.FC = () => {
         >
           Điều Khoản Dịch Vụ
         </h2>
-
-        {/* List các điều khoản */}
         <div className="flex flex-col gap-[60px] w-full max-w-[1252px]">
           {TERMS_DATA.map((term) => (
             <div key={term.id} className="flex flex-col w-full">
-              {/* HEADER */}
               <div className="flex items-start gap-[15px] mb-[20px]">
                 <div
                   style={{
@@ -125,17 +160,12 @@ export const TermsContent: React.FC = () => {
                   {term.title}
                 </h2>
               </div>
-
-              {/* CONTENT (Xử lý Logic Bullet Point) */}
               <div className="pl-[20px] mb-[40px]">
                 {term.content.map((paragraph, idx) => {
-                  // Kiểm tra xem dòng có bắt đầu bằng "-" hay không
                   const isBullet = paragraph.trim().startsWith("-");
-                  // Xóa dấu "-" để hiển thị text sạch
                   const displayText = isBullet
                     ? paragraph.replace("-", "").trim()
                     : paragraph;
-
                   if (isBullet) {
                     return (
                       <ul key={idx} className="list-disc pl-8 mb-[10px]">
@@ -148,7 +178,6 @@ export const TermsContent: React.FC = () => {
                       </ul>
                     );
                   }
-
                   return (
                     <p
                       key={idx}
@@ -160,8 +189,6 @@ export const TermsContent: React.FC = () => {
                   );
                 })}
               </div>
-
-              {/* IMAGE RENDER */}
               {term.image && (
                 <div className="w-full flex justify-center mb-[40px]">
                   <div

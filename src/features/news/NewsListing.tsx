@@ -3,15 +3,46 @@ import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { NewsSearchFilter } from "./NewsSearchFilter"; // Component search của Desktop
 
-// DỮ LIỆU MẪU (Giữ nguyên)
-const NEWS_DATA = Array.from({ length: 32 }).map((_, i) => ({
+// --- IMPORT HÌNH ẢNH TIN TỨC ---
+import news1 from "../../assets/home-experience/onca.png";
+import news2 from "../../assets/news/news1.png";
+import news3 from "../../assets/news/news2.png";
+import news4 from "../../assets/news/news3.png";
+import news5 from "../../assets/home-experience/voguearabia2023.png";
+import news6 from "../../assets/home-experience/coolfish.png";
+import news7 from "../../assets/home-experience/domo.png";
+import news8 from "../../assets/home-experience/freeletics2021.png";
+import news9 from "../../assets/home-experience/bagel.png";
+import news10 from "../../assets/news/news10.png";
+import news11 from "../../assets/news/news11.png";
+import news12 from "../../assets/news/news12.png";
+
+// Danh sách ảnh để dùng vòng lặp
+const newsImages = [
+  news1,
+  news2,
+  news3,
+  news4,
+  news5,
+  news6,
+  news7,
+  news8,
+  news9,
+  news10,
+  news11,
+  news12,
+];
+
+// DỮ LIỆU MẪU (Tăng lên 75 bài để đủ full 5 trang)
+const NEWS_DATA = Array.from({ length: 75 }).map((_, i) => ({
   id: i + 1,
   date: "22 July 2024",
   readTime: "Read 4 min",
   title: `Bài viết số ${i + 1}: Our SaaS Product Just Launched!`,
   slug: `bai-viet-so-${i + 1}`,
   desc: "Remote work has drastically improved my design skills by giving me the freedom to experiment, focus, and learn at my own pace.",
-  image: "bg-gray-200",
+  // Lấy ảnh theo thứ tự vòng lặp
+  image: newsImages[i % newsImages.length],
   tag: i % 2 === 0 ? "In ấn" : "Voucher",
 }));
 
@@ -68,7 +99,7 @@ export const NewsListing: React.FC = () => {
   return (
     <section className="w-full flex flex-col items-center">
       {/* =================================================================
-          1. MOBILE VERSION (< 1024px) - THEO FIGMA MỚI
+          1. MOBILE VERSION (< 1024px)
           ================================================================= */}
       <div className="flex flex-col items-center w-full lg:hidden px-[20px] pt-[40px] pb-[60px]">
         {/* HEADER MOBILE */}
@@ -82,9 +113,8 @@ export const NewsListing: React.FC = () => {
           </p>
         </div>
 
-        {/* SEARCH BAR MOBILE (Design riêng theo Figma) */}
+        {/* SEARCH BAR MOBILE */}
         <div className="w-[322px] h-[56px] relative mb-[40px]">
-          {/* Input Border Blue */}
           <div className="w-full h-full border border-[#4D80C4] rounded-[6px] bg-white flex items-center pl-[12px] pr-[60px]">
             <input
               type="text"
@@ -93,13 +123,12 @@ export const NewsListing: React.FC = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          {/* Red Button Inside */}
           <button className="absolute right-[8px] top-[8px] w-[46px] h-[40px] bg-[#FF0000] rounded-[3px] flex items-center justify-center">
             <Search className="w-[20px] h-[20px] text-white" strokeWidth={3} />
           </button>
         </div>
 
-        {/* NEWS LIST MOBILE (Vertical 1 Column) */}
+        {/* NEWS LIST MOBILE */}
         <div className="flex flex-col gap-[40px] w-full items-center mb-[40px]">
           {currentNews.map((item) => (
             <div
@@ -109,9 +138,11 @@ export const NewsListing: React.FC = () => {
             >
               {/* Thumbnail */}
               <div className="w-full h-[230px] bg-[#F2F2F2] rounded-[4px] relative overflow-hidden mb-[12px]">
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-400">News Img</span>
-                </div>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Content */}
@@ -186,7 +217,7 @@ export const NewsListing: React.FC = () => {
       </div>
 
       {/* =================================================================
-          2. DESKTOP VERSION (>= 1024px) - GIỮ NGUYÊN CODE CŨ
+          2. DESKTOP VERSION (>= 1024px)
           ================================================================= */}
       <div className="hidden lg:flex flex-col items-center">
         {/* Title & Search */}
@@ -232,9 +263,11 @@ export const NewsListing: React.FC = () => {
               >
                 {/* Thumbnail */}
                 <div className="w-full h-[268px] bg-[#F2F2F2] rounded-[4px] mb-[20px] relative overflow-hidden">
-                  <div className="w-full h-full bg-gray-200 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                    <span className="text-gray-400">Image {item.id}</span>
-                  </div>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
 
                 {/* Content */}
@@ -297,7 +330,7 @@ export const NewsListing: React.FC = () => {
           )}
         </div>
 
-        {/* Pagination Desktop */}
+        {/* Pagination Desktop - Đã test với 75 items */}
         {totalPages > 1 && (
           <div className="flex items-center gap-[32px] mb-[100px]">
             <button
