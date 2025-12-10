@@ -2,7 +2,6 @@ import React from "react";
 // Import đúng đường dẫn
 import { ProjectHero } from "../../features/projects/ProjectHero";
 import { ProjectListing } from "../../features/projects/ProjectListing";
-import { ContactBanner } from "../../components/layout/ContactBanner";
 
 export const ProjectPage: React.FC = () => {
   return (
@@ -13,8 +12,6 @@ export const ProjectPage: React.FC = () => {
 
       {/* Listing (3x4) */}
       <ProjectListing />
-
-      <ContactBanner />
     </div>
   );
 };

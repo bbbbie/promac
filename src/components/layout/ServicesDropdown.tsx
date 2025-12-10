@@ -1,3 +1,4 @@
+// src/components/layout/ServicesDropdown.tsx
 import {
   Popover,
   PopoverButton,
@@ -57,9 +58,9 @@ const COLUMNS: Column[] = [
     title: "SẢN PHẨM",
     items: [{ label: "Danh mục sản phẩm", path: "/san-pham" }],
   },
-  // Index 3
+  // Index 3 - CHÍNH SÁCH (Sửa path cho đúng với App.tsx)
   {
-    title: "CHÍNH SÁCH",
+    title: "Chính sách",
     items: [
       { label: "Điều khoản dịch vụ", path: "/chinh-sach/dieu-khoan" },
       { label: "Bảo mật thông tin", path: "/chinh-sach/bao-mat" },
@@ -76,11 +77,11 @@ interface ServicesDropdownProps {
 
 export const ServicesDropdown = ({ label }: ServicesDropdownProps) => {
   const location = useLocation();
-  const isPolicyMenu = label.toUpperCase() === "CHÍNH SÁCH";
 
-  const displayColumns = isPolicyMenu
-    ? [COLUMNS[3]]
-    : [COLUMNS[0], COLUMNS[1], COLUMNS[2]];
+  const displayColumns =
+    label === "Chính sách"
+      ? [COLUMNS[3]]
+      : [COLUMNS[0], COLUMNS[1], COLUMNS[2]];
 
   const isActive = displayColumns.some((col) =>
     col.items.some((item) => {
@@ -91,7 +92,6 @@ export const ServicesDropdown = ({ label }: ServicesDropdownProps) => {
   );
 
   return (
-    // QUAN TRỌNG: Để className rỗng (static) để Panel định vị theo Header cha, không theo nút này
     <Popover className="">
       {({ open }) => (
         <>
@@ -130,23 +130,20 @@ export const ServicesDropdown = ({ label }: ServicesDropdownProps) => {
             <PopoverPanel
               className="absolute z-50 bg-white"
               style={{
-                // --- KHÔI PHỤC CODE GỐC CỦA BẠN ---
-                top: "102px", // Chiều cao Header Desktop
-                left: "0px", // Căn trái sát mép Header Container
-                width: "1434px", // Full width theo khung Header
+                top: "102px",
+                left: "0px",
+                width: "1434px",
                 height: "280px",
                 borderTop: "1px solid #E3E7EF",
                 boxShadow: "0px 10px 20px rgba(0,0,0,0.05)",
                 padding: "30px 30px",
                 boxSizing: "border-box",
-                borderRadius: "0 0 20px 20px",
               }}
             >
               <div
                 className="flex w-full h-full items-start gap-[60px]"
                 style={{
-                  // Canh giữa nội dung bên trong khung to
-                  justifyContent: "center",
+                  justifyContent: label === "Chính sách" ? "center" : "center",
                 }}
               >
                 {/* RENDER CÁC CỘT */}
@@ -157,7 +154,7 @@ export const ServicesDropdown = ({ label }: ServicesDropdownProps) => {
                       className="flex flex-col w-[256px] gap-[20px]"
                     >
                       <span
-                        className="font-inter font-semibold text-[12px] text-[#97A3B7] uppercase tracking-[0.5px]"
+                        className="font-inter font-semibold text-[12px] text-[#97A3B7] tracking-[0.5px]"
                         style={{ lineHeight: "150%" }}
                       >
                         {col.title}
@@ -182,11 +179,11 @@ export const ServicesDropdown = ({ label }: ServicesDropdownProps) => {
                   ))}
                 </div>
 
-                {/* ẢNH QR (Luôn hiện bên phải) */}
+                {/* ẢNH QR (Luôn hiện bên phải để cân đối layout) */}
                 <div
-                  className="relative flex flex-col items-center justify-center shrink-0"
+                  className="relative flex flex-col items-center justify-center"
                   style={{
-                    width: "255px", // Kích thước gốc của bạn
+                    width: "255px",
                     height: "233px",
                     marginTop: "-10px",
                   }}
