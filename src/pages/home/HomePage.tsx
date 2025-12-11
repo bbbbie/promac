@@ -10,6 +10,7 @@ import { HomeTestimonials } from "../../features/home/HomeTestimonials";
 import { HomeWelcome } from "../../features/home/HomeWelcome";
 import { HomeWhyChoose } from "../../features/home/HomeWhyChoose";
 import { ContactBanner } from "../../components/layout/ContactBanner";
+import { HomeEquipment } from "../../features/home/HomeEquipment";
 
 export const HomePage = () => {
   return (
@@ -28,14 +29,8 @@ export const HomePage = () => {
 
       {/* Story Section */}
       {/* Mobile: 20px | Tablet: 30px | Desktop: 41px */}
-      <div className="mt-[20px] md:mt-[30px] lg:mt-[41px]">
+      <div className="mt-[20px] ">
         <HomeStory />
-      </div>
-
-      {/* Services Section */}
-      {/* Mobile: 40px | Tablet: 50px | Desktop: 68px */}
-      <div className="mt-[40px] md:mt-[50px] lg:mt-[68px]">
-        <HomeServices />
       </div>
 
       {/* Why Choose Us */}
@@ -44,10 +39,10 @@ export const HomePage = () => {
         <HomeWhyChoose />
       </div>
 
-      {/* Experience */}
-      {/* Mobile: 50px | Tablet: 80px | Desktop: 100px */}
-      <div className="mt-[50px] md:mt-[80px] lg:mt-[100px]">
-        <HomeExperience />
+      {/* Equipment Section */}
+      {/* Mobile: 60px | Tablet: 80px | Desktop: 100px */}
+      <div className="mt-[60px] md:mt-[80px] lg:mt-[100px]">
+        <HomeEquipment />
       </div>
 
       {/* Process */}
@@ -55,6 +50,20 @@ export const HomePage = () => {
       <div className="mt-[20px]">
         <HomeProcess />
       </div>
+
+      {/* Services Section */}
+      {/* Mobile: 40px | Tablet: 50px | Desktop: 68px */}
+      <div className="mt-[60px] md:mt-[100px] lg:mt-[140px]">
+        <HomeServices />
+      </div>
+
+      {/* Experience */}
+      {/* Mobile: 50px | Tablet: 80px | Desktop: 100px */}
+      <div className="mt-[50px] md:mt-[80px] lg:mt-[100px]">
+        <HomeExperience />
+      </div>
+
+      
 
       {/* Testimonials */}
       {/* Giữ nguyên */}
