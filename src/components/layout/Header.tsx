@@ -101,7 +101,7 @@ export const Header = () => {
     <div className="relative w-full flex justify-center z-50 bg-white shadow-sm">
       {/* 1. MOBILE & TABLET HEADER */}
       {/* lg:hidden -> Ẩn trên Desktop */}
-      <header className="lg:hidden relative w-full h-[72px] md:h-[80px] bg-white border-b border-[#E3E7EF] flex items-center justify-between px-[20px] md:px-[32px]">
+      <header className="lg:hidden relative w-full h-[72px] md:h-[80px] bg-white border-b border-[#FF0000] flex items-center justify-between px-[20px] md:px-[32px]">
         {/* Logo Wrapper */}
         <div className="flex-shrink-0">
           <NavLink to="/" onClick={closeMenu}>
