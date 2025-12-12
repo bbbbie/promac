@@ -269,12 +269,16 @@ import footer4 from "../../assets/footer/footer4.png";
 // --- DATA ---
 // Nhân đôi danh sách nhiều lần để đảm bảo không bị khoảng trắng khi chạy loop
 const BASE_IMAGES = [footer1, footer2, footer3, footer4];
-const DISPLAY_IMAGES = [...BASE_IMAGES, ...BASE_IMAGES, ...BASE_IMAGES, ...BASE_IMAGES];
+const DISPLAY_IMAGES = [
+  ...BASE_IMAGES,
+  ...BASE_IMAGES,
+  ...BASE_IMAGES,
+  ...BASE_IMAGES,
+];
 
 export const ContactBanner = () => {
   return (
     <section className="w-full flex flex-col items-center overflow-hidden bg-white pb-[60px] md:pb-[100px]">
-      
       {/* Inject CSS Animations */}
       <style>{`
         @keyframes marquee-left {
@@ -330,7 +334,6 @@ export const ContactBanner = () => {
           AUTO-PLAY SLIDERS
           ================================================================= */}
       <div className="w-full flex flex-col gap-[20px] overflow-hidden group">
-        
         {/* --- ROW 1: Right to Left (Trái sang) --- */}
         <div className="w-full overflow-hidden">
           <div className="flex w-max animate-marquee-left gap-[20px]">
@@ -340,7 +343,7 @@ export const ContactBanner = () => {
                 className="bg-gray-200 bg-cover bg-center shrink-0"
                 style={{
                   // Kích thước nhỏ hơn: Giảm từ 490px -> 300px (Desktop) / 200px (Mobile)
-                  width: "clamp(200px, 25vw, 300px)", 
+                  width: "clamp(200px, 25vw, 300px)",
                   height: "clamp(80px, 10vw, 100px)",
                   borderRadius: "100px",
                   backgroundImage: `url(${imgSrc})`,
@@ -359,7 +362,7 @@ export const ContactBanner = () => {
                 className="bg-gray-200 bg-cover bg-center shrink-0"
                 style={{
                   // Kích thước nhỏ hơn tương tự row 1
-                  width: "clamp(200px, 25vw, 300px)", 
+                  width: "clamp(200px, 25vw, 300px)",
                   height: "clamp(80px, 10vw, 100px)",
                   borderRadius: "100px",
                   backgroundImage: `url(${imgSrc})`,
@@ -368,7 +371,6 @@ export const ContactBanner = () => {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );
