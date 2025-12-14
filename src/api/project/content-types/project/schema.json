@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "articles",
+  "collectionName": "projects",
   "info": {
-    "singularName": "article",
-    "pluralName": "articles",
-    "displayName": "Article",
-    "description": "Create your blog content"
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project"
   },
   "options": {
     "draftAndPublish": true
@@ -15,32 +14,34 @@
     "title": {
       "type": "string"
     },
-    "description": {
-      "type": "text",
-      "maxLength": 80
-    },
     "slug": {
       "type": "uid",
       "targetField": "title"
     },
+    "customer": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
+    },
     "thumbnail": {
       "type": "media",
       "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images",
         "files",
-        "videos"
+        "videos",
+        "audios"
       ]
-    },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "articles"
     },
     "content": {
       "type": "richtext"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category",
+      "inversedBy": "projects"
     }
   }
 }

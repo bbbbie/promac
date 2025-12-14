@@ -16,7 +16,8 @@
       "type": "string"
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "name"
     },
     "articles": {
       "type": "relation",
@@ -26,6 +27,26 @@
     },
     "description": {
       "type": "text"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product",
+      "mappedBy": "category"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project",
+      "mappedBy": "category"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "news",
+        "product",
+        "project"
+      ]
     }
   }
 }
