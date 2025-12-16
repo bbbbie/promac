@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Check, ArrowRight } from "lucide-react";
 
-// --- IMPORT ẢNH (Giữ nguyên) ---
+// --- IMPORT ẢNH (Giữ nguyên đường dẫn của bạn) ---
 import project1 from "../../assets/printingservices/project1.png";
 import project2 from "../../assets/printingservices/project2.png";
 import project3 from "../../assets/printingservices/project3.png";
@@ -53,10 +53,7 @@ export const HomeServices = () => {
   // Biến này để lưu vị trí chính xác (số thực) để scroll mượt khi tốc độ thấp
   const scrollFloat = useRef(0);
 
-  // TỐC ĐỘ SCROLL (Càng nhỏ càng chậm)
-  // 1 = Bình thường (~60px/s)
-  // 0.5 = Chậm
-  // 0.3 = Rất chậm
+  // TỐC ĐỘ SCROLL (0.5 = Chậm vừa phải)
   const SCROLL_SPEED = 0.5; 
 
   // Auto Scroll Effect
@@ -68,11 +65,10 @@ export const HomeServices = () => {
         // Cộng dồn vị trí vào biến float
         scrollFloat.current += SCROLL_SPEED;
         
-        // Gán giá trị float vào scrollLeft (trình duyệt sẽ tự làm tròn visual nhưng ta giữ logic ở ref)
+        // Gán giá trị float vào scrollLeft
         sliderRef.current.scrollLeft = scrollFloat.current;
 
-        // Logic lặp vô tận (Optional: Nếu muốn cuộn hết thì quay về đầu ngay lập tức)
-        // Nếu cuộn đến kịch đường biên -> reset về 0 (nếu bạn muốn vòng lặp hoàn hảo cần nhân bản list nhiều hơn nữa)
+        // Logic lặp vô tận: Nếu cuộn đến kịch đường biên -> reset về 0
         if (sliderRef.current.scrollLeft >= sliderRef.current.scrollWidth - sliderRef.current.clientWidth) {
            scrollFloat.current = 0;
            sliderRef.current.scrollLeft = 0;
@@ -92,7 +88,7 @@ export const HomeServices = () => {
     setIsPaused(true);
     setStartX(e.pageX - sliderRef.current.offsetLeft);
     setScrollLeft(sliderRef.current.scrollLeft);
-    // Đồng bộ lại biến float khi bắt đầu kéo để tránh bị giật khi thả ra
+    // Đồng bộ lại biến float khi bắt đầu kéo
     scrollFloat.current = sliderRef.current.scrollLeft;
   };
 
@@ -114,7 +110,7 @@ export const HomeServices = () => {
     if (!isDown || !sliderRef.current) return;
     e.preventDefault();
     const x = e.pageX - sliderRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Tốc độ kéo tay (nhân 2 cho nhạy)
+    const walk = (x - startX) * 2; // Tốc độ kéo tay
     sliderRef.current.scrollLeft = scrollLeft - walk;
     // Cập nhật luôn biến float khi kéo
     scrollFloat.current = sliderRef.current.scrollLeft;
@@ -159,7 +155,19 @@ export const HomeServices = () => {
           {MAIN_SERVICES.map((service, index) => (
             <div
               key={index}
-              className="flex flex-col bg-[#F5F5F5] rounded-[30px] lg:rounded-[40px] p-[20px] lg:p-[30px] h-full transition-transform hover:-translate-y-2 duration-300"
+              className="
+                flex flex-col 
+                bg-[#F5F5F5] 
+                rounded-[30px] lg:rounded-[40px] 
+                p-[20px] lg:p-[30px] 
+                h-full 
+                transition-all duration-300 
+                
+                /* --- HOVER EFFECT FOR MAIN CARDS --- */
+                hover:bg-[#FFD1D1] 
+                hover:-translate-y-2 
+                hover:shadow-lg
+              "
             >
               {/* Image */}
               <div className="w-full aspect-[4/3] lg:h-[275px] mb-[24px] rounded-[15px] overflow-hidden shadow-sm">
@@ -246,16 +254,16 @@ export const HomeServices = () => {
                     rounded-full 
                     transition-all duration-300 
                     
-                    /* --- DEFAULT STATE (Chữ đỏ, Viền đỏ, Nền trắng, Shadow nhẹ) --- */
+                    /* --- TRẠNG THÁI MẶC ĐỊNH (Theo yêu cầu: Chữ đỏ, Viền đỏ) --- */
                     bg-white 
                     border border-[#FF0000] 
                     text-[#FF0000] 
                     shadow-md
                     
-                    /* --- HOVER STATE (Nền đỏ, Chữ trắng) --- */
+                    /* --- TRẠNG THÁI HOVER (Sửa lại: Nền Đỏ, Chữ Trắng cho nổi bật) --- */
                     hover:bg-[#FF0000] 
                     hover:text-white 
-                    hover:shadow-lg
+                    hover:shadow-[0px_8px_20px_rgba(255,0,0,0.4)] /* Bóng đổ màu đỏ khi hover */
                     hover:-translate-y-1
 
                     group/item
