@@ -317,11 +317,6 @@ export const ContactBanner = () => {
       </div>
 
       <div className="flex flex-row gap-[24px] md:gap-[36px] mb-[60px] z-20 relative">
-        <Link to="/bao-gia">
-          <button className="group flex items-center justify-center w-[160px] md:w-[188px] h-[45px] md:h-[53px] bg-white text-[#FF0000] border border-[#FF0000] rounded-[20px] font-bold text-[16px] md:text-[20px] hover:bg-[#FF0000] hover:text-white transition-all duration-300">
-            Yêu cầu báo giá
-          </button>
-        </Link>
 
         <Link to="/lien-he">
           <button className="flex items-center justify-center w-[160px] md:w-[188px] h-[45px] md:h-[53px] bg-white text-[#FF0000] border border-[#FF0000] rounded-[20px] font-bold text-[16px] md:text-[20px] hover:bg-[#FF0000] hover:text-white transition-all duration-300">

@@ -136,9 +136,6 @@ export const HomeBanner = () => {
             </div>
 
             <div className="flex items-center gap-6 pl-12 mb-5 pb-5 md:pb-0">
-              <button className="px-6 py-3 bg-[#FF0000] text-white text-[16px] lg:text-[18px] font-bold rounded-full shadow-[0px_4px_15px_rgba(255,0,0,0.4)] hover:scale-105 transition-transform">
-                Yêu cầu báo giá
-              </button>
               <a href="#" className="flex items-center gap-2 text-[#FF0000] font-bold text-[16px] lg:text-[18px] hover:underline group">
                 Xem danh mục sản phẩm 
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
