@@ -25,13 +25,13 @@ const DATA = {
 
 export const HomeBanner = () => {
   return (
-    <div className="w-full flex justify-center bg-white my-10 px-4 xl:px-0">
+    <div className="w-full flex justify-center bg-white ">
       
       {/* =========================================================================
           1. MOBILE & TABLET VERSION (< 1024px)
           - Layout dọc (Flex Column)
          ========================================================================= */}
-      <div className="flex lg:hidden flex-col w-full bg-[#FFDEDE] rounded-[20px] overflow-hidden shadow-lg relative pb-6">
+      <div className="flex lg:hidden flex-col w-full bg-[#FFD1D1] rounded-[20px] overflow-hidden shadow-lg relative pb-6">
         
         {/* --- Phần Header & Hình ảnh Mobile --- */}
         <div className="absolute top-[-100px] right-[-100px] w-[300px] h-[300px] bg-red-500 rounded-full opacity-10 z-0 pointer-events-none"></div>
@@ -107,18 +107,18 @@ export const HomeBanner = () => {
           - Giữ nguyên code desktop hiện tại của bạn
           - Chỉ hiện khi màn hình lớn (hidden lg:flex)
          ========================================================================= */}
-      <div className="hidden lg:flex w-full bg-[#FFDEDE] rounded-[30px] relative overflow-hidden shadow-lg flex-col min-h-[600px] m-8">
+      <div className="hidden lg:flex w-full bg-[#FFD1D1] rounded-[30px] relative overflow-hidden shadow-lg flex-col min-h-[600px] m-8">
         
         {/* --- PHẦN BODY --- */}
         <div className="flex w-full h-full flex-grow relative z-10">
           
           {/* CỘT TRÁI: TEXT CONTENT */}
           <div className="w-[60%] pt-[40px] pl-[30px] lg:pl-[50px] xl:pl-[80px] flex flex-col justify-start gap-6 z-20">
-            <h1 className="font-inter font-semibold text-[30px] lg:text-[40px] leading-tight text-[#FF0000]">
+            <h1 className="mt-5 font-inter font-bold text-[30px] lg:text-[40px] leading-tight text-[#FF0000]">
               {DATA.header}
             </h1>
 
-            <div className="bg-white rounded-full px-8 py-4 shadow-sm w-fit max-w-[80%]">
+            <div className="bg-white rounded-full mt-5 px-8 py-4 shadow-sm w-fit max-w-[90%]">
               <p className="font-bold text-[16px] lg:text-[20px] text-black tracking-wide text-center">
                 {DATA.subHeaderBox}
               </p>

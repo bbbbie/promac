@@ -13,7 +13,7 @@ export const ProductHero: React.FC = () => {
       <section className="flex flex-col items-center w-full max-w-[375px] bg-[#FFF5F6] rounded-[30px] pt-[40px] pb-[60px] px-[23px] md:hidden">
         {/* Title Group */}
         <div className="flex flex-col items-center gap-[16px] text-center mb-[50px]">
-          <h1 className="font-inter font-extrabold text-[28px] leading-[34px] text-[#FF0000]">
+          <h1 className="font-inter font-bold text-[28px] leading-[34px] text-[#FF0000]">
             Sản Phẩm Của Chúng Tôi
           </h1>
           <p className="font-inter font-semibold text-[16px] leading-[19px] text-[#374151]">
@@ -71,7 +71,7 @@ export const ProductHero: React.FC = () => {
       <section className="hidden md:flex xl:hidden flex-col items-center w-full max-w-[900px] bg-[#FFF5F6] rounded-[30px] py-[60px] px-[40px] mx-4 shadow-sm">
         {/* Title Group */}
         <div className="flex flex-col items-center text-center mb-[40px]">
-          <h1 className="font-inter font-extrabold text-[#FF0000] text-[36px] lg:text-[40px] leading-[1.2] mb-[16px]">
+          <h1 className="font-inter font-bold text-[#FF0000] text-[36px] lg:text-[40px] leading-[1.2] mb-[16px]">
             Sản Phẩm Của Chúng Tôi
           </h1>
           <p className="font-inter font-semibold text-[#374151] text-[16px] lg:text-[18px] max-w-[700px]">
@@ -137,7 +137,7 @@ export const ProductHero: React.FC = () => {
         {/* Title Section */}
         <div className="mt-[56px] text-center flex flex-col items-center">
           <h1
-            className="font-medium text-[#FF0000]"
+            className="font-bold text-[#FF0000]"
             style={{
               fontFamily: "Inter",
               fontSize: "50px",
