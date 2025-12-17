@@ -1,5 +1,51 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface HomeHomeBanner extends Struct.ComponentSchema {
+  collectionName: 'components_home_home_banners';
+  info: {
+    displayName: 'Home Banner';
+  };
+  attributes: {
+    address: Schema.Attribute.String;
+    email: Schema.Attribute.Email;
+    features: Schema.Attribute.Text;
+    main_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    phone_1: Schema.Attribute.String;
+    phone_2: Schema.Attribute.String;
+    sub_images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    subtitle: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface HomeHomeStory extends Struct.ComponentSchema {
+  collectionName: 'components_home_home_stories';
+  info: {
+    displayName: 'Home Story';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface HomeHomeWelcome extends Struct.ComponentSchema {
+  collectionName: 'components_home_home_welcomes';
+  info: {
+    displayName: 'Home Welcome';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -63,6 +109,9 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'home.home-banner': HomeHomeBanner;
+      'home.home-story': HomeHomeStory;
+      'home.home-welcome': HomeHomeWelcome;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

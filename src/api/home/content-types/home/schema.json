@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "homes",
+  "info": {
+    "singularName": "home",
+    "pluralName": "homes",
+    "displayName": "Homepage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "home_banner": {
+      "type": "component",
+      "component": "home.home-banner",
+      "repeatable": false
+    },
+    "home_welcome": {
+      "type": "component",
+      "component": "home.home-welcome",
+      "repeatable": false
+    },
+    "home_story": {
+      "type": "component",
+      "component": "home.home-story",
+      "repeatable": false
+    }
+  }
+}
