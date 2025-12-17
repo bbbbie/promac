@@ -1,47 +1,43 @@
 {
-  "name": "promac",
-  "version": "0.1.0",
+  "name": "promac-frontend",
   "private": true,
-  "description": "A Strapi application",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "strapi build",
-    "console": "strapi console",
-    "deploy": "strapi deploy",
-    "dev": "strapi develop",
-    "develop": "strapi develop",
-    "seed:example": "node ./scripts/seed.js",
-    "start": "strapi start",
-    "strapi": "strapi",
-    "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@_sh/strapi-plugin-ckeditor": "^6.0.3",
-    "@ckeditor/strapi-plugin-ckeditor": "^1.1.1",
-    "@strapi/plugin-cloud": "5.32.0",
-    "@strapi/plugin-users-permissions": "5.32.0",
-    "@strapi/strapi": "5.32.0",
-    "better-sqlite3": "^12.5.0",
-    "fs-extra": "^10.0.0",
-    "mime-types": "^2.1.27",
-    "mysql2": "3.9.8",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "@headlessui/react": "^2.2.9",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.26",
+    "lucide-react": "^0.556.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.66.1",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.9.6",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.1.12",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "typescript": "^5"
-  },
-  "engines": {
-    "node": ">=20.0.0 <=24.x.x",
-    "npm": ">=6.0.0"
-  },
-  "strapi": {
-    "uuid": "441abb69-b1ee-4779-8b63-6a3b8aff672c",
-    "installId": "bf5b8d101dcbdf6a7c7dbd4c97af728495e942a3289e41a22228c2a4c5f739b4"
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.1.0",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.15",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.3",
+    "vite": "^7.2.2"
   }
 }
